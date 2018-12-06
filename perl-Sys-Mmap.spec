@@ -4,7 +4,7 @@
 #
 Name     : perl-Sys-Mmap
 Version  : 0.19
-Release  : 5
+Release  : 6
 URL      : https://cpan.metacpan.org/authors/id/S/SW/SWALTERS/Sys-Mmap-0.19.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/S/SW/SWALTERS/Sys-Mmap-0.19.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libs/libsys-mmap-perl/libsys-mmap-perl_0.19-1.debian.tar.xz
