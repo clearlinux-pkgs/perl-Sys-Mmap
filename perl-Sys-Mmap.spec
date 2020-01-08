@@ -4,14 +4,14 @@
 #
 Name     : perl-Sys-Mmap
 Version  : 0.19
-Release  : 10
+Release  : 11
 URL      : https://cpan.metacpan.org/authors/id/S/SW/SWALTERS/Sys-Mmap-0.19.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/S/SW/SWALTERS/Sys-Mmap-0.19.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libs/libsys-mmap-perl/libsys-mmap-perl_0.19-1.debian.tar.xz
 Summary  : 'uses mmap to map in a file as a Perl variable'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
-Requires: perl-Sys-Mmap-lib = %{version}-%{release}
+Requires: perl-Sys-Mmap-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -22,33 +22,35 @@ it under the terms of either:
 %package dev
 Summary: dev components for the perl-Sys-Mmap package.
 Group: Development
-Requires: perl-Sys-Mmap-lib = %{version}-%{release}
 Provides: perl-Sys-Mmap-devel = %{version}-%{release}
+Requires: perl-Sys-Mmap = %{version}-%{release}
 
 %description dev
 dev components for the perl-Sys-Mmap package.
 
 
-%package lib
-Summary: lib components for the perl-Sys-Mmap package.
-Group: Libraries
+%package perl
+Summary: perl components for the perl-Sys-Mmap package.
+Group: Default
+Requires: perl-Sys-Mmap = %{version}-%{release}
 
-%description lib
-lib components for the perl-Sys-Mmap package.
+%description perl
+perl components for the perl-Sys-Mmap package.
 
 
 %prep
 %setup -q -n Sys-Mmap-0.19
-cd ..
-%setup -q -T -D -n Sys-Mmap-0.19 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libsys-mmap-perl_0.19-1.debian.tar.xz
+cd %{_builddir}/Sys-Mmap-0.19
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Sys-Mmap-0.19/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/Sys-Mmap-0.19/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -58,7 +60,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -78,12 +80,12 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/Sys/Mmap.pm
 
 %files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/Sys::Mmap.3
 
-%files lib
+%files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/Sys/Mmap/Mmap.so
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/Sys/Mmap.pm
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/auto/Sys/Mmap/Mmap.so
