@@ -4,11 +4,11 @@
 #
 Name     : perl-Sys-Mmap
 Version  : 0.20
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/T/TO/TODDR/Sys-Mmap-0.20.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/T/TO/TODDR/Sys-Mmap-0.20.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libs/libsys-mmap-perl/libsys-mmap-perl_0.19-1.debian.tar.xz
-Summary  : uses mmap to map in a file as a Perl variable
+Summary  : 'uses mmap to map in a file as a Perl variable'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
 Requires: perl-Sys-Mmap-perl = %{version}-%{release}
@@ -23,7 +23,6 @@ it under the terms of either:
 Summary: dev components for the perl-Sys-Mmap package.
 Group: Development
 Provides: perl-Sys-Mmap-devel = %{version}-%{release}
-Requires: perl-Sys-Mmap = %{version}-%{release}
 Requires: perl-Sys-Mmap = %{version}-%{release}
 
 %description dev
@@ -88,5 +87,5 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/Sys/Mmap.pm
-/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/auto/Sys/Mmap/Mmap.so
+/usr/lib/perl5/vendor_perl/5.30.2/x86_64-linux-thread-multi/Sys/Mmap.pm
+/usr/lib/perl5/vendor_perl/5.30.2/x86_64-linux-thread-multi/auto/Sys/Mmap/Mmap.so
