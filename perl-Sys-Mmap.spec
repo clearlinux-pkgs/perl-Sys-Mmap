@@ -4,7 +4,7 @@
 #
 Name     : perl-Sys-Mmap
 Version  : 0.20
-Release  : 22
+Release  : 23
 URL      : https://cpan.metacpan.org/authors/id/T/TO/TODDR/Sys-Mmap-0.20.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/T/TO/TODDR/Sys-Mmap-0.20.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libs/libsys-mmap-perl/libsys-mmap-perl_0.19-1.debian.tar.xz
@@ -87,5 +87,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/Sys/Mmap.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/auto/Sys/Mmap/Mmap.so
+/usr/lib/perl5/*
